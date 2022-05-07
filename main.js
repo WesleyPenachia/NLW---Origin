@@ -1,4 +1,20 @@
+window.addEventListener('scroll', onScroll)
+
+onScroll()
 function onScroll() {
+  showNavOnScroll()
+  showBackToTopButtonOnScroll()
+}
+
+function showBackToTopButtonOnScroll() {
+  if (scrollY > 400) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
+  }
+}
+
+function showNavOnScroll() {
   if (scrollY > 0) {
     navigation.classList.add('scroll')
   } else {
@@ -13,3 +29,17 @@ function openMenu() {
 function closeMenu() {
   document.body.classList.remove('menu-expanded')
 }
+
+ScrollReveal({
+  origin: 'top',
+  distance: '30px',
+  duration: 700
+}).reveal(`
+      #home, 
+      #home img, 
+      #home .stats,
+      #services headers,
+      #services .card,
+      #about,
+      #about header,
+      #about .content`)
